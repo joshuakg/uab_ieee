@@ -2,66 +2,24 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { theme } from "../util/theme";
 import Green from "../../../assets/green.png";
-import Twitter from './Twitter'
-
-const Container = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  width: 100vw;
-  min-height: 100vh;
-  align-items: center;
-  background-color: ${theme.white};
-`;
-
-const PageBody = styled.div`
-  width: 100vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-`;
-
-const Title = styled.div`
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin: 0.5rem;
-`;
-const ParagraphBody = styled.div`
-  font-weight: 500;
-  margin: 0.5rem;
-`;
-
-const ParagraphContainer = styled.div`
-  margin: 1rem;
-  margin-bottom: 5vh;
-`;
-
-const ContentContainer = styled.div`
-  width: 40vw;
-  margin-top: 5vh;
-  margin-left: 3vw;
-  border-radius: 10px;
-  background-color: white;
-`;
-
-const CalenderContianer = styled.div`
-  margin-top: 5vh;
-  margin-right: 3vw;
-  width: 40vw;
-`;
-
-const ImagePlaceHolder = styled.img.attrs({
-  src: Green
-})`
-  height: 40vh;
-  width: 100vw;
-`;
+import Twitter from "./Twitter";
+// import { PlaceHolder } from "../util/Style";
+import {
+  Container,
+  PageBody,
+  Title,
+  ParagraphBody,
+  ParagraphContainer,
+  ContentContainer,
+  PlaceHolder,
+  ImagePlaceHolder
+} from "../util/Style";
 
 class Home extends Component {
   render() {
     return (
       <Container>
-        <ImagePlaceHolder />
+        <ImagePlaceHolder src={Green} />
         <PageBody>
           <ContentContainer>
             <ParagraphContainer>
@@ -88,9 +46,9 @@ class Home extends Component {
               </ParagraphBody>
             </ParagraphContainer>
           </ContentContainer>
-          <CalenderContianer>
-            <Twitter/>
-          </CalenderContianer>
+          <PlaceHolder>
+            <Twitter />
+          </PlaceHolder>
         </PageBody>
       </Container>
     );

@@ -24,15 +24,32 @@ const RightContainer = styled.div`
   align-items: center;
 `;
 const UabLogo = styled.img`
-  height: 4vh;
+  width: 16vw;
   margin-left: 2vw;
 `;
 
+const UabColorLogo = UabLogo.extend`
+  transition: all .4s;
+  margin-left: -16vw;
+  &:hover {
+    cursor: pointer;
+  }
+`
+
 const Image = styled.img`
-  height: 5vh;
+  width: 11vw;
   margin-left: 1vw;
   margin-bottom: .5vh;
 `;
+
+const IeeeColorLogo = Image.extend`
+  transition: all .4s;
+  margin-left: -11.05vw;
+  &:hover {
+    cursor: pointer;
+  }
+`
+
 
 const FlexRow = styled.div`
   display: flex;
@@ -42,12 +59,18 @@ const FlexRow = styled.div`
 `
 
 class TopNav extends Component {
+  state = {
+    opacity: '0',
+    ieeeOpacity: '0'
+  }
   render() {
     return (
       <Container>
         <FlexRow>
-          <UabLogo src={require("../../../assets/uab_schoolofeng_black.png")} />
-          <Image src={require("../../../assets/ieee_black.png")} />
+          <UabLogo onClick={this.redirectToUAB} src={require("../../../assets/uab_schoolofeng_black.png")} />
+          <UabColorLogo style={{opacity: this.state.opacity}} onClick={this.redirectToUAB} src={require("../../../assets/uab_schoolofeng.png")} onMouseOver={() => {this.setState({opacity: '1'})}} onMouseLeave={()=> {this.setState({opacity: '0'})}}/>
+          <Image  src={require("../../../assets/ieee_black.png")} />
+          <IeeeColorLogo style={{opacity: this.state.ieeeOpacity}} onClick={this.redirectToIEEE} src={require("../../../assets/ieee_blue.png")} onMouseOver={() => {this.setState({ieeeOpacity: '1'})}} onMouseLeave={()=> {this.setState({ieeeOpacity: '0'})}}/>
         </FlexRow>
         <RightContainer>
           <NavLink
@@ -65,11 +88,11 @@ class TopNav extends Component {
             About
           </NavLink>
           <NavLink
-            to="/Involvement"
+            to="/Activities"
             className="nav-link"
             activeClassName="active-nav-link"
           >
-            Involvement
+            Activities
           </NavLink>
           <NavLink
             to="/Contact"
@@ -81,6 +104,13 @@ class TopNav extends Component {
         </RightContainer>
       </Container>
     );
+  }
+
+  redirectToUAB = () => {
+    window.location.replace('http://www.uab.edu/engineering/home/')
+  }
+  redirectToIEEE = () => {
+    window.location.replace('http://www.ieee.org')
   }
 }
 
