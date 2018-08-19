@@ -1,0 +1,27 @@
+.nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  text-decoration: none;
+  transition: all .7s;
+  font-size: 1rem;
+  height: 10vh;
+  width: 12.5vw;
+}
+.nav-link:hover {
+  color: #00629B;
+  
+}
+
+.active-nav-link {
+  color: #00629B;
+  text-decoration: none;
+  font-size: 1rem;
+  height: 10vh;
+  width: 12.5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 2px solid black;
+}
