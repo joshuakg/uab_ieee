@@ -16,7 +16,7 @@ class Twitter extends Component {
       <TwitterTimelineEmbed
       sourceType="profile"
       screenName="IEEEorg"
-      options={{height: '80vh', width: '40vw'}}
+      options={{height: '80vh', width: this.props.isMobile ? '70vw' : '40vw'}}
     />
     );
   }

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from './theme'
+import { theme } from "./theme";
 
 export const Container = styled.div`
   display: flex;
@@ -14,18 +14,20 @@ export const Container = styled.div`
 export const PageBody = styled.div`
   width: 100vw;
   display: flex;
-  flex-direction: row;
+  flex-direction: ${props => props.isMobile ? 'column' : 'row'};
   justify-content: space-around;
+  align-items: ${props=>props.isMobile?'center':null}
 `;
 
 export const Title = styled.div`
-  font-size: 1.3rem;
+  font-size: ${props => (props.isMobile ? "1rem" : "1.3rem")};
   font-weight: 600;
   margin: 0.5rem;
 `;
 export const ParagraphBody = styled.div`
   font-weight: 500;
-  margin: 0.5rem;
+  margin: ${props=>props.isMobile ? '0' : '0.5rem'};
+  font-size: ${props => (props.isMobile ? "2vw" : "1rem")};
 `;
 
 export const ParagraphContainer = styled.div`
@@ -41,6 +43,13 @@ export const ContentContainer = styled.div`
   background-color: white;
 `;
 
+export const ContentContainerMobile = styled.div`
+  width: 70vw;
+  margin-top: 5vh;
+  border-radius: 10px;
+  background-color: white;
+`;
+
 export const PlaceHolder = styled.div`
   margin-top: 5vh;
   margin-right: 3vw;
@@ -49,9 +58,18 @@ export const PlaceHolder = styled.div`
   border-radius: 10px;
 `;
 
+export const PlaceHolderMobile = styled.div`
+  margin-top: 5vh;
+  width: 70vw;
+  background-color: white;
+  border-radius: 10px;
+`
+
 export const ImagePlaceHolder = styled.img.attrs({
   // src: Green
 })`
-  height: 50vh;
+  max-height: 50vh;
+  min-height: 25vh;
   width: 100vw;
+  ${"" /* min-width: 50rem; */};
 `;

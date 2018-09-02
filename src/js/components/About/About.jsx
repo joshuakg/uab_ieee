@@ -11,8 +11,14 @@ import {
   ParagraphContainer,
   ContentContainer,
   PlaceHolder,
-  ImagePlaceHolder
+  ImagePlaceHolder,
+  ContentContainerMobile,
+  PlaceHolderMobile
 } from "../util/Style";
+import Responsive from "react-responsive";
+
+const Desktop = props => <Responsive {...props} minWidth={992} />;
+const Mobile = props => <Responsive {...props} maxWidth={991} />;
 
 /*
 News Archive:
@@ -104,14 +110,103 @@ const TeamList = styled.ul`
 class About extends Component {
   render() {
     return (
+      <React.Fragment>
+        <Desktop>{this.renderView(false)}</Desktop>
+        <Mobile>{this.renderMobileView(true)}</Mobile>
+      </React.Fragment>
+    );
+  }
+
+  renderMobileView = isMobile => {
+    return (
+      <Container isMobile={isMobile}>
+        <ImagePlaceHolder src={Night} />
+        <PageBody style={{alignItems: 'center'}} isMobile={isMobile}>
+          <ContentContainerMobile isMobile={isMobile}>
+            <ParagraphContainer isMobile={isMobile}>
+              <Title isMobile={isMobile}>Team</Title>
+              <ParagraphBody isMobile={isMobile}>
+                <TeamList isMobile={isMobile}>
+                  <li>
+                    Branch Chair:{" "}
+                    <Link href="mailto:rich0925@uab.edu">Joey Richardson</Link>
+                  </li>
+                  <li>
+                    Vice Chair:{" "}
+                    <Link href="mailto:collierm@uab.edu">Maggie Collier</Link>
+                  </li>
+                  <li>
+                    Treasurer:{" "}
+                    <Link href="mailto:deangood@uab.edu">Dean Good</Link>
+                  </li>
+                  <li>
+                    Secretary:{" "}
+                    <Link href="mailto:cmcgarty@uab.edu">Connor McGarty</Link>
+                  </li>
+                  <li>
+                    Webmaster:{" "}
+                    <Link href="mailto:joshuakg@uab.edu">Josh Griffin</Link>
+                  </li>
+                </TeamList>
+              </ParagraphBody>
+            </ParagraphContainer>
+            <ParagraphContainer isMobile={isMobile}>
+              <Title isMobile={isMobile}>Resources and Forms</Title>
+              <ParagraphBody isMobile={isMobile}>
+                <Link href="https://www.uab.edu/engineering/home/">
+                  UAB School of Engineering
+                </Link>
+                <br />
+                <Link href="http://www-ece.eng.uab.edu/">UAB ECE Page</Link>
+                <br />
+              </ParagraphBody>
+            </ParagraphContainer>
+            <ParagraphContainer isMobile={isMobile}>
+              <Title isMobile={isMobile}>IEEE Info</Title>
+              <ParagraphBody isMobile={isMobile}>
+                <Link href="https://www.ewb-usa.org/">Home</Link>
+                <br />
+                <Link href="https://ieeeusa.org/shop/">Shop IEEE</Link>
+                <br />
+                <Link href="https://www.ieee.org/membership/join/index.html">
+                  Join IEEE
+                </Link>
+                <br />
+                <Link href="https://www.ieee.org/membership/my-ieee.html">
+                  myIEEE
+                </Link>
+                <br />
+                <Link href="https://ieeexplore.ieee.org/Xplore/home.jsp">
+                  IEEEXplore
+                </Link>
+                <br />
+              </ParagraphBody>
+            </ParagraphContainer>
+          </ContentContainerMobile>
+          <PlaceHolderMobile isMobile={isMobile}>
+            <ParagraphContainer isMobile={isMobile}>
+              <Title isMobile={isMobile}>What is IEEE?</Title>
+              <ParagraphBody isMobile={isMobile}>
+                IEEE is the world’s largest technical professional organization
+                dedicated to advancing technology for the benefit of humanity.
+              </ParagraphBody>
+            </ParagraphContainer>
+          </PlaceHolderMobile>
+        </PageBody>
+      </Container>
+    );
+  };
+
+  renderView = isMobile => {
+    return (
       <Container>
         <ImagePlaceHolder src={Night} />
-        <PageBody>
-          <ContentContainer>
-            <ParagraphContainer>
-              <Title>Team</Title>
-              <ParagraphBody>
-                <TeamList>
+        <PageBody isMobile={isMobile}>
+          <ContentContainer isMobile={isMobile}>
+            <ParagraphContainer isMobile={isMobile}>
+              <Title isMobile={isMobile}>Team</Title>
+              <ParagraphBody isMobile={isMobile}>
+                <TeamList isMobile={isMobile}>
                   <li>
                     Branch Chair:{" "}
                     <Link href="mailto:rich0925@uab.edu">Joey Richardson</Link>
@@ -136,8 +231,8 @@ class About extends Component {
               </ParagraphBody>
             </ParagraphContainer>
             <ParagraphContainer>
-              <Title>Resources and Forms</Title>
-              <ParagraphBody>
+              <Title isMobile={isMobile}>Resources and Forms</Title>
+              <ParagraphBody isMobile={isMobile}>
                 <Link href="https://www.uab.edu/engineering/home/">
                   UAB School of Engineering
                 </Link>
@@ -146,9 +241,9 @@ class About extends Component {
                 <br />
               </ParagraphBody>
             </ParagraphContainer>
-            <ParagraphContainer>
-              <Title>IEEE Info</Title>
-              <ParagraphBody>
+            <ParagraphContainer isMobile={isMobile}>
+              <Title isMobile={isMobile}>IEEE Info</Title>
+              <ParagraphBody isMobile={isMobile}>
                 <Link href="https://www.ewb-usa.org/">Home</Link>
                 <br />
                 <Link href="https://ieeeusa.org/shop/">Shop IEEE</Link>
@@ -168,10 +263,10 @@ class About extends Component {
               </ParagraphBody>
             </ParagraphContainer>
           </ContentContainer>
-          <PlaceHolder>
-            <ParagraphContainer>
-              <Title>What is IEEE?</Title>
-              <ParagraphBody>
+          <PlaceHolder isMobile={isMobile}>
+            <ParagraphContainer isMobile={isMobile}>
+              <Title isMobile={isMobile}>What is IEEE?</Title>
+              <ParagraphBody isMobile={isMobile}>
                 IEEE is the world’s largest technical professional organization
                 dedicated to advancing technology for the benefit of humanity.
               </ParagraphBody>
@@ -180,7 +275,7 @@ class About extends Component {
         </PageBody>
       </Container>
     );
-  }
+  };
 }
 
 export default About;

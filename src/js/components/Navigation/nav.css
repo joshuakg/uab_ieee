@@ -25,3 +25,18 @@
   align-items: center;
   border-top: 2px solid black;
 }
+
+.enter {
+  opacity: 0
+}
+.active {
+  opacity: 1;
+  transition: opacity .3s;
+}
+.leave {
+opacity: 1;
+}
+.leaveActive {
+  opacity: 0;
+  transition: opacity .3s;
+}

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import styled from 'styled-components'
-import { theme } from '../util/theme'
-import Color from 'color'
-import Blvd from '../../../assets/university_blvd.png'
+import React, { Component } from "react";
+import styled from "styled-components";
+import { theme } from "../util/theme";
+import Color from "color";
+import Blvd from "../../../assets/university_blvd.png";
 import {
   Container,
   PageBody,
@@ -11,9 +11,13 @@ import {
   ParagraphContainer,
   ContentContainer,
   PlaceHolder,
-  ImagePlaceHolder
+  ImagePlaceHolder,
+  ContentContainerMobile
 } from "../util/Style";
+import Responsive from "react-responsive";
 
+const Desktop = props => <Responsive {...props} minWidth={992} />;
+const Mobile = props => <Responsive {...props} maxWidth={991} />;
 
 // const Container = styled.div`
 //   display: flex;
@@ -70,14 +74,16 @@ const Subheader = styled.h2`
 `;
 
 const Link = styled.a`
-  transition: all .4s;
+  transition: all 0.4s;
   font-weight: 500;
   display: inline;
   text-decoration: none;
   color: #00b5e2;
   text-indent: 5%;
   &:hover {
-    color: ${Color('#00b5e2').darken(0.4).string()}
+    color: ${Color("#00b5e2")
+      .darken(0.4)
+      .string()};
   }
 `;
 
@@ -109,22 +115,37 @@ Software Competitions
 // */
 
 class Involvement extends Component {
-  render () {
+  render() {
     return (
       <Container>
-        <ImagePlaceHolder src={Blvd}/>
+        <ImagePlaceHolder src={Blvd} />
         <PageBody>
-          <ContentContainer>
-            <ParagraphContainer>
-              <ParagraphBody>
-              <Title style={{textAlign: 'center'}}>More Information About UAB IEEE Activities Coming Soon</Title>                
-              </ParagraphBody>
-            </ParagraphContainer>
-          </ContentContainer>
+          <Desktop>
+            <ContentContainer>
+              <ParagraphContainer>
+                <ParagraphBody>
+                  <Title style={{ textAlign: "center" }}>
+                    More Information About UAB IEEE Activities Coming Soon
+                  </Title>
+                </ParagraphBody>
+              </ParagraphContainer>
+            </ContentContainer>
+          </Desktop>
+          <Mobile>
+          <ContentContainerMobile>
+              <ParagraphContainer>
+                <ParagraphBody isMobile={true}>
+                  <Title isMobile={true} style={{ textAlign: "center" }}>
+                    More Information About UAB IEEE Activities Coming Soon
+                  </Title>
+                </ParagraphBody>
+              </ParagraphContainer>
+            </ContentContainerMobile>
+          </Mobile>
         </PageBody>
       </Container>
-    )
-  }    
+    );
+  }
 }
 
-export default Involvement
+export default Involvement;
